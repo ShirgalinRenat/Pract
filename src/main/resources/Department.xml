@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<department>
+    <id>0</id>
+    <boss>Текст документа</boss>
+    <fullName>Текст документа</fullName>
+    <phoneNumber>Текст документа</phoneNumber>
+    <shortName>Текст документа</shortName>
+</department>

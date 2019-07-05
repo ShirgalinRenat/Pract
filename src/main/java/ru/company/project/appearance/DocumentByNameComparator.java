@@ -1,7 +1,9 @@
-package DataModel;
+package ru.company.project.appearance;
 
+import ru.company.project.datamodel.Document;
 
 import java.util.Comparator;
+
 
 public class DocumentByNameComparator implements Comparator<Document> {
     @Override
