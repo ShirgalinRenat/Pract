@@ -1,4 +1,4 @@
-package ru.company.project.datamodel;
+package ru.company.project.model.document;
 
 import ru.company.project.enums.DefinitionTypes;
 
@@ -31,40 +31,40 @@ public class Task extends Document {
     @RandomValue(DefinitionTypes.BOOLEAN)
     private boolean isUnderControl;
 
-    public Date getDateIssue(){
+    public Date getDateIssue() {
         return dateIssue;
     }
 
-    public void setDateIssue(Date dateIssue){
-        this.dateIssue=dateIssue;
+    public void setDateIssue(Date dateIssue) {
+        this.dateIssue = dateIssue;
     }
 
-    public int getExecutionData(){
+    public int getExecutionData() {
         return executionData;
     }
 
-    public void setExecutionData(int executionData){
+    public void setExecutionData(int executionData) {
         this.executionData = executionData;
     }
 
-    public String getRespPerson(){
+    public String getRespPerson() {
         return respPerson;
     }
 
-    public void setRespPerson(String respPerson){
-        this.respPerson=respPerson;
+    public void setRespPerson(String respPerson) {
+        this.respPerson = respPerson;
     }
 
-    public String getOrderController(){
+    public String getOrderController() {
         return respPerson;
     }
 
-    public void setOrderController(String orderController){
-        this.orderController=orderController;
+    public void setOrderController(String orderController) {
+        this.orderController = orderController;
     }
 
     @Override
     public String toString() {
-        return getAuthorDoc()+":\r\n"+"\r Поручение "+super.toString();
+        return "Поручение " + super.toString();
     }
 }

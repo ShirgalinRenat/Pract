@@ -1,4 +1,4 @@
-package ru.company.project.datamodel;
+package ru.company.project.model.document;
 
 import ru.company.project.enums.DefinitionTypes;
 

@@ -1,6 +1,6 @@
 package ru.company.project.appearance;
 
-import ru.company.project.datamodel.Document;
+import ru.company.project.model.document.Document;
 
 import java.util.Comparator;
 

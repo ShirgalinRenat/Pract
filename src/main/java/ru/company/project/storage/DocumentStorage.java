@@ -1,6 +1,6 @@
 package ru.company.project.storage;
 
-import ru.company.project.datamodel.Document;
+import ru.company.project.model.document.Document;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +21,10 @@ public class DocumentStorage {
     public static List<Document> getDocumentList() {
 
         return documentList;
+    }
+
+    public static void addDoc(Document document)  {
+        DocumentStorage.documentList.add(document);
     }
 
 }

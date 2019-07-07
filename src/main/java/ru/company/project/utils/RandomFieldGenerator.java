@@ -1,11 +1,11 @@
 package ru.company.project.utils;
 
-import ru.company.project.datamodel.Document;
-import ru.company.project.factory.DocumentGenerator;
-import ru.company.project.staff.StaffGenerator;
-import ru.company.project.datamodel.RandomValue;
+import ru.company.project.factory.document.DocumentObtainable;
+import ru.company.project.model.document.Document;
+import ru.company.project.factory.staff.StaffObtainable;
+import ru.company.project.model.document.RandomValue;
 import org.apache.hadoop.util.ReflectionUtils;
-import ru.company.project.staff.Staff;
+import ru.company.project.model.staff.Staff;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
@@ -15,15 +15,14 @@ import java.util.Random;
 
 /**
  * Генератор данных
- *
  */
-public class RandomFieldGenerator implements DocumentGenerator, StaffGenerator {
+public class RandomFieldGenerator implements DocumentObtainable, StaffObtainable {
 
-    private int constForGenerate=1000;
+    private int constForGenerate = 1000;
 
-    private Random random=new Random();
+    private Random random = new Random();
 
-    private List<String> numbers= Arrays.asList(
+    private List<String> numbers = Arrays.asList(
             "9612589634",
             "9843654785",
             "9814785368",
@@ -31,7 +30,7 @@ public class RandomFieldGenerator implements DocumentGenerator, StaffGenerator {
             "9351435896"
     );
 
-    private List<String> persons= Arrays.asList(
+    private List<String> persons = Arrays.asList(
             "Иванов Иван Алексеевич",
             "Васильев Михаил Юрьевич",
             "Аксенов Эдуард Евгеньевич",
@@ -46,19 +45,19 @@ public class RandomFieldGenerator implements DocumentGenerator, StaffGenerator {
             "Доставка на эл почту"
     );
 
-    private List<String> docTypes= Arrays.asList(
+    private List<String> docTypes = Arrays.asList(
             "INCOMING",
             "OUTGOING",
             "TASK"
     );
 
-    private List<String> docNames= Arrays.asList(
+    private List<String> docNames = Arrays.asList(
             "Накладная",
             "Отчет",
             "Смета"
     );
 
-    private List<String> position= Arrays.asList(
+    private List<String> position = Arrays.asList(
             "Директор",
             "Бухгалтер",
             "Оператор"
@@ -72,23 +71,23 @@ public class RandomFieldGenerator implements DocumentGenerator, StaffGenerator {
         return docNames.get(random.nextInt(docNames.size()));
     }
 
-    String doRandomDevType(){
+    String doRandomDevType() {
         return deliveryTypes.get(random.nextInt(deliveryTypes.size()));
     }
 
-    String doRandomDocType(){
+    String doRandomDocType() {
         return docTypes.get(random.nextInt(docTypes.size()));
     }
 
-    String doRandomNumber(){
+    String doRandomNumber() {
         return numbers.get(random.nextInt(numbers.size()));
     }
 
-    String doRandomPosition(){
+    String doRandomPosition() {
         return position.get(random.nextInt(position.size()));
     }
 
-    Date doRandomDate(){
+    Date doRandomDate() {
         return new Date(System.currentTimeMillis() - random.nextInt(1000 * 3600 * 24 * 1000));
     }
 
@@ -98,11 +97,12 @@ public class RandomFieldGenerator implements DocumentGenerator, StaffGenerator {
             throw new IllegalArgumentException("максильмальное значение должно быть больше минимального");
         }
 
-        return (int)(Math.random() * ((max - min) + 1)) + min;
+        return (int) (Math.random() * ((max - min) + 1)) + min;
     }
 
     /**
-     * Реализация интерфейса DocumentGenerator
+     * Реализация интерфейса DocumentObtainable
+     *
      * @param document
      * @throws IllegalAccessException
      */
