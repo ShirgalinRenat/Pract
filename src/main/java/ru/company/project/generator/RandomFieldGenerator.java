@@ -1,8 +1,8 @@
-package ru.company.project.utils;
+package ru.company.project.generator;
 
-import ru.company.project.datamodel.Document;
-import ru.company.project.factory.DataOptainable;
-import ru.company.project.datamodel.RandomValue;
+import ru.company.project.factory.document.DocumentGenerator;
+import ru.company.project.model.document.Document;
+import ru.company.project.model.document.RandomValue;
 import org.apache.hadoop.util.ReflectionUtils;
 
 import java.lang.reflect.Field;
@@ -11,15 +11,24 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-public class RandomFieldGenerator implements DataOptainable {
+/**
+ * Генератор данных
+ */
+public class RandomFieldGenerator implements DocumentGenerator {
 
-    private static Random random=new Random();
+    private int constForGenerate = 1000;
 
-    public RandomFieldGenerator(){
+    private Random random = new Random();
 
-    }
+    private List<String> numbers = Arrays.asList(
+            "9612589634",
+            "9843654785",
+            "9814785368",
+            "9652589436",
+            "9351435896"
+    );
 
-    private static List<String> persons= Arrays.asList(
+    private List<String> persons = Arrays.asList(
             "Иванов Иван Алексеевич",
             "Васильев Михаил Юрьевич",
             "Аксенов Эдуард Евгеньевич",
@@ -27,42 +36,56 @@ public class RandomFieldGenerator implements DataOptainable {
             "Прыглов Артем Викторович"
     );
 
-    private static List<String> deliveryTypes = Arrays.asList(
+    private List<String> deliveryTypes = Arrays.asList(
             "Курьерская доставка",
             "Доставка на почтовый адрес",
             "Доставка на работу",
             "Доставка на эл почту"
     );
 
-    private static List<String> docTypes= Arrays.asList(
+    private List<String> docTypes = Arrays.asList(
             "INCOMING",
             "OUTGOING",
             "TASK"
     );
 
-    private static List<String> docNames= Arrays.asList(
+    private List<String> docNames = Arrays.asList(
             "Накладная",
             "Отчет",
             "Смета"
     );
 
-    public static String takeRandomPerson() {
+    private List<String> position = Arrays.asList(
+            "Директор",
+            "Бухгалтер",
+            "Оператор"
+    );
+
+    String doRandomPerson() {
         return persons.get(random.nextInt(persons.size()));
     }
 
-    public static String takeRandomNames() {
+    String doRandomNames() {
         return docNames.get(random.nextInt(docNames.size()));
     }
 
-    public static String takeRandomDevType(){
+    String doRandomDevType() {
         return deliveryTypes.get(random.nextInt(deliveryTypes.size()));
     }
 
-    public static String takeRandomDocType(){
+    String doRandomDocType() {
         return docTypes.get(random.nextInt(docTypes.size()));
     }
 
-    public static Date takeRandomDate(){
+    String doRandomNumber() {
+        return numbers.get(random.nextInt(numbers.size()));
+    }
+
+    String doRandomPosition() {
+        return position.get(random.nextInt(position.size()));
+    }
+
+    Date doRandomDate() {
         return new Date(System.currentTimeMillis() - random.nextInt(1000 * 3600 * 24 * 1000));
     }
 
@@ -72,11 +95,17 @@ public class RandomFieldGenerator implements DataOptainable {
             throw new IllegalArgumentException("максильмальное значение должно быть больше минимального");
         }
 
-        return (int)(Math.random() * ((max - min) + 1)) + min;
+        return (int) (Math.random() * ((max - min) + 1)) + min;
     }
 
+    /**
+     * Реализация интерфейса DocumentGenerator
+     *
+     * @param document
+     * @throws IllegalAccessException
+     */
     @Override
-    public void dataOptain(Document document) throws IllegalAccessException {
+    public void documentObtain(Document document) throws IllegalAccessException {
 
         for (Field field : ReflectionUtils.getDeclaredFieldsIncludingInherited(document.getClass()))
             if (field.isAnnotationPresent(RandomValue.class)) {
@@ -84,22 +113,22 @@ public class RandomFieldGenerator implements DataOptainable {
                 Object value = null;
                 switch (field.getAnnotation(RandomValue.class).value()) {
                     case INTEGER:
-                        value = random.nextInt(1000);
+                        value = random.nextInt(constForGenerate);
                         break;
                     case DATE:
-                        value = takeRandomDate();
+                        value = doRandomDate();
                         break;
                     case TEXT:
                         value = "Текст документа";
                         break;
                     case NAME:
-                        value = takeRandomNames();
+                        value = doRandomNames();
                         break;
                     case HUMANNAME:
-                        value = takeRandomPerson();
+                        value = doRandomPerson();
                         break;
                     case REGNUM:
-                        value = String.valueOf(random.nextInt(1000));
+                        value = String.valueOf(random.nextInt(constForGenerate));
                         break;
                     case BOOLEAN:
                         value = true;
@@ -109,4 +138,5 @@ public class RandomFieldGenerator implements DataOptainable {
                 field.set(document, value);
             }
     }
+
 }

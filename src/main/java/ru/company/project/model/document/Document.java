@@ -1,10 +1,10 @@
-package ru.company.project.datamodel;
+package ru.company.project.model.document;
 
 import ru.company.project.enums.DefinitionTypes;
 
 import java.util.Date;
 
-public abstract class Document implements Comparable <Document> {
+public abstract class Document implements Comparable<Document> {
     /**
      * id-идентификатор документов
      */
@@ -37,63 +37,65 @@ public abstract class Document implements Comparable <Document> {
     private Date docReg;
 
     @Override
-    public int compareTo(Document document){
-            return this.regNum.compareTo(document.regNum);
+    public int compareTo(Document document) {
+        return this.regNum.compareTo(document.regNum);
     }
+
     /**
      * Строка для вывода данных
+     *
      * @return информация о документе
      */
     @Override
-    public String toString(){
-        return "№"+regNum+" от "+docReg+ "."+" Название:"+docName;
+    public String toString() {
+        return "№" + regNum + " от " + docReg + "." + " Название:" + docName;
     }
 
-    public int getId(){
+    public int getId() {
         return id;
     }
 
-    public void setId(int id){
-        this.id=id;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getDocName(){
+    public String getDocName() {
         return docName;
     }
 
-    public void setDocName(String docName){
-        this.docName=docName;
+    public void setDocName(String docName) {
+        this.docName = docName;
     }
 
-    public String getDocTxt(){
+    public String getDocTxt() {
         return docTxt;
     }
 
-    public void setDocTxt(String docTxt){
-        this.docTxt=docTxt;
+    public void setDocTxt(String docTxt) {
+        this.docTxt = docTxt;
     }
 
-    public String getRegNum(){
+    public String getRegNum() {
         return regNum;
     }
 
-    public void setRegNum(String regNum){
-        this.regNum=regNum;
+    public void setRegNum(String regNum) {
+        this.regNum = regNum;
     }
 
-    public String getAuthorDoc(){
+    public String getAuthorDoc() {
         return authorDoc;
     }
 
-    public void setAuthorDoc(String authorDoc){
-        this.authorDoc =authorDoc;
+    public void setAuthorDoc(String authorDoc) {
+        this.authorDoc = authorDoc;
     }
 
-    public Date getDocReg(){
+    public Date getDocReg() {
         return docReg;
     }
 
-    public void setDocReg(Date docReg){
-        this.docReg=docReg;
+    public void setDocReg(Date docReg) {
+        this.docReg = docReg;
     }
 }

@@ -1,13 +1,18 @@
 package ru.company.project.exceptions;
 
-import ru.company.project.datamodel.Document;
+import ru.company.project.model.document.Document;
 
-/*
-Исключение уведомляющие о документе с уже существующим id
+import java.text.MessageFormat;
+
+/**
+ * The Document exists exception.
+ * <p>
+ * Throw Exception with id of duplicated document
  */
 public class DocumentExistsException extends Exception {
     public DocumentExistsException(Document doc) {
-        super("Документ с регистрационным номером " + doc.getRegNum() + " уже существует");
+        //super("Документ с регистрационным номером " + doc.getRegNum() + " уже существует");
+        new MessageFormat("Документ с регистрационным номером " + doc.getRegNum() + " уже существует");
     }
 
     public DocumentExistsException(String errorMessage) {

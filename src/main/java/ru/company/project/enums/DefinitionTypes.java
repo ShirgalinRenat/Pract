@@ -1,5 +1,8 @@
 package ru.company.project.enums;
 
+/**
+ * Набор констант типов переменных для генерации данных.
+ */
 public enum DefinitionTypes {
     DATE,
     DELIVERY,
@@ -8,5 +11,7 @@ public enum DefinitionTypes {
     BOOLEAN,
     NAME,
     HUMANNAME,
-    REGNUM
+    REGNUM,
+    NUMBER,
+    POSITION
 }

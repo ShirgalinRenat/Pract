@@ -1,4 +1,4 @@
-package ru.company.project.datamodel;
+package ru.company.project.model.document;
 
 import ru.company.project.enums.DefinitionTypes;
 
@@ -26,39 +26,40 @@ public class Incoming extends Document {
     @RandomValue(DefinitionTypes.DATE)
     private Date dateOutReg;
 
-    public String getSender(){
+    public String getSender() {
         return sender;
     }
 
-    public void setSender(String sender){
-        this.sender=sender;
+    public void setSender(String sender) {
+        this.sender = sender;
     }
 
-    public String getDestinationIn(){
+    public String getDestinationIn() {
         return destinationIn;
     }
 
-    public void setDestinationIn(String destinationIn){
-        this.destinationIn=destinationIn;
+    public void setDestinationIn(String destinationIn) {
+        this.destinationIn = destinationIn;
     }
 
-    public String getOutNumber(){
+    public String getOutNumber() {
         return outNumber;
     }
 
-    public void setOutNumber(String outNumber){
-        this.outNumber=outNumber;
+    public void setOutNumber(String outNumber) {
+        this.outNumber = outNumber;
     }
 
-    public Date getDateOutReg(){return dateOutReg;}
+    public Date getDateOutReg() {
+        return dateOutReg;
+    }
 
-    public void setDateOutReg(Date dateOutReg){
-        this.dateOutReg=dateOutReg;
+    public void setDateOutReg(Date dateOutReg) {
+        this.dateOutReg = dateOutReg;
     }
 
     @Override
-    public String toString()
-    {
-        return getAuthorDoc()+":\r\n"+"\r Входящий "+super.toString();
+    public String toString() {
+        return "Входящий " + super.toString();
     }
 }

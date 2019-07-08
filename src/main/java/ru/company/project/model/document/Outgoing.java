@@ -1,4 +1,4 @@
-package ru.company.project.datamodel;
+package ru.company.project.model.document;
 
 import ru.company.project.enums.DefinitionTypes;
 
@@ -14,23 +14,24 @@ public class Outgoing extends Document {
     @RandomValue(DefinitionTypes.TEXT)
     private String devMethod;
 
-    public String getDestinationOut(){
+    public String getDestinationOut() {
         return destinationOut;
     }
 
-    public void setDestinationOut(String destinationOut){
-        this.destinationOut=destinationOut;
+    public void setDestinationOut(String destinationOut) {
+        this.destinationOut = destinationOut;
     }
 
-    public String getDevMethod(){
+    public String getDevMethod() {
         return devMethod;
     }
 
-    public void setDevMethod(String devMethod){
-        this.devMethod=devMethod;
+    public void setDevMethod(String devMethod) {
+        this.devMethod = devMethod;
     }
 
     @Override
-    public String toString() { return getAuthorDoc()+":\r\n"+"\r Исходящий "+super.toString();
+    public String toString() {
+        return "Исходящий " + super.toString();
     }
 }
