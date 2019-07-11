@@ -1,22 +1,25 @@
 package ru.company.project.factory.staff;
 
 
+import org.xml.sax.SAXException;
 import ru.company.project.model.staff.Staff;
 
 import javax.xml.bind.JAXBException;
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 abstract class StaffFactory implements Factory {
 
-    private StaffObtainable obtainer;
+    private StaffGenerator obtainer;
 
-    public StaffObtainable getObtainer(){
+    public StaffGenerator getObtainer() {
         return obtainer;
     }
 
-    public StaffFactory(StaffObtainable obtainer){
+    public StaffFactory(StaffGenerator obtainer) {
         this.obtainer = obtainer;
     }
 
-    public abstract Staff create() throws IllegalAccessException, JAXBException, FileNotFoundException;
+    public abstract Staff create() throws IllegalAccessException, JAXBException, IOException, ParserConfigurationException, SAXException;
 }

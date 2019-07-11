@@ -8,10 +8,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Интерфейс Random value.
+ * Описание аннотации Random value.
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface RandomValue {
+public @interface FieldDefinitionType {
     DefinitionTypes value();
 }

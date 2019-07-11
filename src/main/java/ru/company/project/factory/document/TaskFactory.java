@@ -5,7 +5,7 @@ import ru.company.project.model.document.Task;
 
 public class TaskFactory extends DocumentFactory {
 
-    public TaskFactory(DocumentObtainable data) {
+    public TaskFactory(DocumentGenerator data) {
         super(data);
     }
 
@@ -17,9 +17,7 @@ public class TaskFactory extends DocumentFactory {
      */
     @Override
     public Document create() throws IllegalAccessException {
-        Task tsk = new Task();
-        getObtainer().documentObtain(tsk);
-        return tsk;
+        return getObtainer().documentObtain(new Task());
     }
 
 }

@@ -5,7 +5,7 @@ import ru.company.project.model.document.Outgoing;
 
 public class OutgoingFactory extends DocumentFactory {
 
-    public OutgoingFactory(DocumentObtainable data) {
+    public OutgoingFactory(DocumentGenerator data) {
         super(data);
     }
 
@@ -16,9 +16,7 @@ public class OutgoingFactory extends DocumentFactory {
      * @throws IllegalAccessException
      */
     @Override
-    public Document create() throws  IllegalAccessException {
-        Outgoing out = new Outgoing();
-        getObtainer().documentObtain(out);
-        return out;
+    public Document create() throws IllegalAccessException {
+        return getObtainer().documentObtain(new Outgoing());
     }
 }

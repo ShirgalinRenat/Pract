@@ -1,69 +1,78 @@
 package ru.company.project.model.staff;
 
+import ru.company.project.enums.ClassTypes;
 import ru.company.project.enums.DefinitionTypes;
-import ru.company.project.model.document.RandomValue;
+import ru.company.project.model.document.FieldDefinitionType;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
-@XmlRootElement
+@XmlRootElement(name = "Department")
+@ClassType(ClassTypes.PERSON)
 public class Person extends Staff {
     /**
      * name-Имя
      */
-    @RandomValue(DefinitionTypes.TEXT)
+    @FieldDefinitionType(DefinitionTypes.TEXT)
     private String name;
     /**
      * surName-Фамилия
      */
-    @RandomValue(DefinitionTypes.TEXT)
+    @FieldDefinitionType(DefinitionTypes.TEXT)
     private String surName;
     /**
      * patronymic-Отчество
      */
-    @RandomValue(DefinitionTypes.TEXT)
+    @FieldDefinitionType(DefinitionTypes.TEXT)
     private String patronymic;
     /**
      * position-Должность
      */
-    @RandomValue(DefinitionTypes.TEXT)
+    @FieldDefinitionType(DefinitionTypes.TEXT)
     private String position;
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    @XmlElement
-    public void setName(String name){
-        this.name=name;
+    @XmlElement(name = "name")
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getSurName(){
+    public String getSurName() {
         return surName;
     }
 
-    @XmlElement
-    public void setSurName(String surname){
-        this.surName =surname;
+    @XmlElement(name = "surName")
+    public void setSurName(String surname) {
+        this.surName = surname;
     }
 
-    public String getPatronymic(){
+    public String getPatronymic() {
         return patronymic;
     }
 
-    @XmlElement
-    public void setPatronymic(String patronymic){
-        this.patronymic=patronymic;
+    @XmlElement(name = "patronymic")
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
     }
 
-    public String getPosition(){
-        return  position;
+    public String getPosition() {
+        return position;
     }
 
-    @XmlElement
-    public void setPosition(String position){
-        this.position=position;
+    @XmlElement(name = "position")
+    public void setPosition(String position) {
+        this.position = position;
     }
 
+    @Override
+    public String toString() {
+        //return fullName+shortName+boss+phoneNumber+super.toString();
+        return "\r\n Person [name=" + name + ", patronymic=" + patronymic + ", position=" + position + ", surName=" + surName + "]";
+    }
 }

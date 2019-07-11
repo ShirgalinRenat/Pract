@@ -8,7 +8,7 @@ import ru.company.project.model.document.Incoming;
  */
 public class IncomingFactory extends DocumentFactory {
 
-    public IncomingFactory(DocumentObtainable data) {
+    public IncomingFactory(DocumentGenerator data) {
         super(data);
     }
 
@@ -20,9 +20,7 @@ public class IncomingFactory extends DocumentFactory {
      */
     @Override
     public Document create() throws IllegalAccessException {
-        Incoming inc = new Incoming();
-        getObtainer().documentObtain(inc);
-        return inc;
+        return getObtainer().documentObtain(new Incoming());
     }
 
 }

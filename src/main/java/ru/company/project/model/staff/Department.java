@@ -1,81 +1,86 @@
 package ru.company.project.model.staff;
 
+import ru.company.project.enums.ClassTypes;
 import ru.company.project.enums.DefinitionTypes;
-import ru.company.project.model.document.RandomValue;
+import ru.company.project.model.document.FieldDefinitionType;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 
 
-@XmlRootElement
+@XmlRootElement(name = "Department")
+@ClassType(ClassTypes.DEPARTMENT)
 public class Department extends Staff {
     /**
      * fullName-Полное наименование
      */
-    @RandomValue(DefinitionTypes.TEXT)
+    @FieldDefinitionType(DefinitionTypes.HUMANNAME)
     private String fullName;
     /**
      * shortName-Краткое наименование
      */
-    @RandomValue(DefinitionTypes.TEXT)
+    @FieldDefinitionType(DefinitionTypes.TEXT)
     private String shortName;
     /**
      * boss-Руководитель
      */
-    @RandomValue(DefinitionTypes.TEXT)
+    @FieldDefinitionType(DefinitionTypes.HUMANNAME)
     private String boss;
     /**
      * phoneNumber-Контактные телефоны
      */
-    @RandomValue(DefinitionTypes.TEXT)
+    @FieldDefinitionType(DefinitionTypes.NUMBER)
     private String phoneNumber;
 
     public String getFullName() {
         return fullName;
     }
 
-    @XmlElement
+    @XmlElement(name = "fullName")
     public void setFullName(String fullName) {
 
         this.fullName = fullName;
     }
+
+    @XmlElement(name = "shortName")
+    public void setShortName(String shortName) {
+
+        this.shortName = shortName;
+    }
+
+    @XmlElement(name = "boss")
+    public void setBoss(String boss) {
+
+        this.boss = boss;
+    }
+
+    @XmlElement(name = "phoneNumber")
+    public void setPhoneNumber(String phoneNumber) {
+
+        this.phoneNumber = phoneNumber;
+    }
+
 
     public String getShortName() {
 
         return shortName;
     }
 
-    @XmlElement
-    public void setShortName(String shortName) {
-
-        this.shortName = shortName;
-    }
 
     public String getBoss() {
 
         return boss;
     }
 
-    @XmlElement
-    public void setBoss(String boss) {
-
-        this.boss = boss;
-    }
 
     public String getPhoneNumber() {
 
         return phoneNumber;
     }
 
-    @XmlElement
-    public void setPhoneNumber(String phoneNumber) {
-
-        this.phoneNumber = phoneNumber;
-    }
-
     @Override
     public String toString() {
-        return fullName+shortName+super.toString();
+        //return fullName+shortName+boss+phoneNumber+super.toString();
+        return "\r\n Department [fullName=" + fullName + ", shortName=" + shortName + ", boss=" + boss + ", phoneNumber=" + phoneNumber + "]";
     }
 
 }

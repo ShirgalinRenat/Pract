@@ -7,15 +7,15 @@ import ru.company.project.model.document.Document;
  */
 abstract class DocumentFactory implements Factory {
 
-    private DocumentObtainable obtainer;
+    private DocumentGenerator obtainer;
 
-    public DocumentFactory(DocumentObtainable obtainer) {
+    public DocumentFactory(DocumentGenerator obtainer) {
         this.obtainer = obtainer;
     }
 
     public abstract Document create() throws IllegalAccessException;
 
-    public DocumentObtainable getObtainer() {
+    public DocumentGenerator getObtainer() {
         return obtainer;
     }
 

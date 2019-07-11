@@ -7,16 +7,16 @@ public abstract class Staff {
 
     public String debug;
 
-    public int getId(){
+    public int getId() {
         return id;
     }
 
-    public void setId(int id){
-        this.id=id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return String.valueOf(id);
     }
 
