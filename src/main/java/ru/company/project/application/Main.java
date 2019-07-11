@@ -17,7 +17,9 @@ import ru.company.project.storage.DocumentStorage;
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -34,12 +36,6 @@ public class Main {
         DocumentStorage.addDoc(new TaskFactory(new RandomFieldGenerator()).create());
         DocumentStorage.addDoc(new OutgoingFactory(new RandomFieldGenerator()).create());
 
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        Gson gson = new GsonBuilder()
-                .setPrettyPrinting()
-                .create();
-
         Stream<Document> col = DocumentStorage.getDocumentList().stream();
 
         Map<String, List<Document>> namesOfAuthors = convertToTreeMap(col.collect(Collectors.groupingBy(Document::getAuthorDoc)));
@@ -51,14 +47,9 @@ public class Main {
             for (Document document : item.getValue()) {
                 System.out.println(document);
 
-                try {
-                    objectMapper.writeValue(new File("./src/main/resources/docs/" + item.getKey() + ".json"), item.getValue());
-                } catch (JsonGenerationException e) {
-                    e.printStackTrace();
-                } catch (JsonMappingException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                try (Writer writer = new FileWriter("./src/main/resources/docs/" + item.getKey() + ".json")) {
+                    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                    gson.toJson(item.getValue(), writer);
                 }
 
             }

@@ -1,1 +1,15 @@
-[{"id":646,"docName":"Смета","docTxt":"Текст документа","regNum":"116","authorDoc":"Иванов Иван Алексеевич","docReg":1562356688519,"sender":"Отчет","destinationIn":"Текст документа","outNumber":"Текст документа","dateOutReg":1562612352827},{"id":683,"docName":"Накладная","docTxt":"Текст документа","regNum":"878","authorDoc":"Иванов Иван Алексеевич","docReg":1562775632194,"destinationOut":"Текст документа","devMethod":"Текст документа"},{"id":974,"docName":"Смета","docTxt":"Текст документа","regNum":"834","authorDoc":"Иванов Иван Алексеевич","docReg":1562770422308,"destinationOut":"Текст документа","devMethod":"Текст документа"}]
+[
+  {
+    "dateIssue": "Jul 8, 2019, 2:01:26 PM",
+    "executionData": 249,
+    "respPerson": "Прыглов Артем Викторович",
+    "orderController": "Аксенов Эдуард Евгеньевич",
+    "isUnderControl": true,
+    "id": 571,
+    "docName": "Накладная",
+    "docTxt": "Текст документа",
+    "regNum": "611",
+    "authorDoc": "Иванов Иван Алексеевич",
+    "docReg": "Jul 10, 2019, 3:18:28 PM"
+  }
+]

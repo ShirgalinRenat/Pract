@@ -1,1 +1,12 @@
-[{"id":80,"docName":"Накладная","docTxt":"Текст документа","regNum":"435","authorDoc":"Аксенов Эдуард Евгеньевич","docReg":1562573565465,"dateIssue":1562505628137,"executionData":849,"respPerson":"Васильев Михаил Юрьевич","orderController":"Васильев Михаил Юрьевич"},{"id":796,"docName":"Смета","docTxt":"Текст документа","regNum":"133","authorDoc":"Аксенов Эдуард Евгеньевич","docReg":1562820999552,"sender":"Отчет","destinationIn":"Текст документа","outNumber":"Текст документа","dateOutReg":1562811685743}]
+[
+  {
+    "destinationOut": "Текст документа",
+    "devMethod": "Текст документа",
+    "id": 714,
+    "docName": "Накладная",
+    "docTxt": "Текст документа",
+    "regNum": "180",
+    "authorDoc": "Аксенов Эдуард Евгеньевич",
+    "docReg": "Jul 9, 2019, 1:01:56 AM"
+  }
+]
