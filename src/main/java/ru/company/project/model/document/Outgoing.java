@@ -6,12 +6,12 @@ public class Outgoing extends Document {
     /**
      * destinationOut-адресат
      */
-    @RandomValue(DefinitionTypes.TEXT)
+    @FieldDefinitionType(DefinitionTypes.TEXT)
     private String destinationOut;
     /**
      * devMethod-способ доставки
      */
-    @RandomValue(DefinitionTypes.TEXT)
+    @FieldDefinitionType(DefinitionTypes.TEXT)
     private String devMethod;
 
     public String getDestinationOut() {

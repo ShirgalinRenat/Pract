@@ -20,9 +20,7 @@ public class IncomingFactory extends DocumentFactory {
      */
     @Override
     public Document create() throws IllegalAccessException {
-        Incoming inc = new Incoming();
-        getObtainer().documentObtain(inc);
-        return inc;
+        return getObtainer().documentObtain(new Incoming());
     }
 
 }
