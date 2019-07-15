@@ -2,8 +2,15 @@ package ru.company.project.generator;
 
 import ru.company.project.factory.document.DocumentGenerator;
 import ru.company.project.model.document.Document;
+
+import ru.company.project.factory.staff.StaffGenerator;
+import ru.company.project.model.document.FieldDefinitionType;
+import org.apache.hadoop.util.ReflectionUtils;
+import ru.company.project.model.staff.Staff;
+
 import ru.company.project.model.document.RandomValue;
 import org.apache.hadoop.util.ReflectionUtils;
+
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
@@ -14,7 +21,19 @@ import java.util.Random;
 /**
  * Генератор данных
  */
+
+public class RandomFieldGenerator implements DocumentGenerator, StaffGenerator {
+    /*
+     *Количество элементов
+     */
+    private int count = 5;
+    /*
+     * счетчик элементов
+     */
+    private int counter = 0;
+
 public class RandomFieldGenerator implements DocumentGenerator {
+
 
     private int constForGenerate = 1000;
 
@@ -61,6 +80,16 @@ public class RandomFieldGenerator implements DocumentGenerator {
             "Оператор"
     );
 
+
+    public RandomFieldGenerator() {
+
+    }
+
+    public RandomFieldGenerator(int count) {
+        this.count = count;
+    }
+
+
     String doRandomPerson() {
         return persons.get(random.nextInt(persons.size()));
     }
@@ -105,13 +134,16 @@ public class RandomFieldGenerator implements DocumentGenerator {
      * @throws IllegalAccessException
      */
     @Override
-    public void documentObtain(Document document) throws IllegalAccessException {
 
+    public Document documentObtain(Document document) throws IllegalAccessException {
+        if (counter >= count) return null;
         for (Field field : ReflectionUtils.getDeclaredFieldsIncludingInherited(document.getClass()))
-            if (field.isAnnotationPresent(RandomValue.class)) {
+            if (field.isAnnotationPresent(FieldDefinitionType.class)) {
 
                 Object value = null;
-                switch (field.getAnnotation(RandomValue.class).value()) {
+                switch (field.getAnnotation(FieldDefinitionType.class).value()) {
+
+
                     case INTEGER:
                         value = random.nextInt(constForGenerate);
                         break;
@@ -137,6 +169,34 @@ public class RandomFieldGenerator implements DocumentGenerator {
                 field.setAccessible(true);
                 field.set(document, value);
             }
+
+        counter++;
+        return document;
+    }
+
+    @Override
+    public Staff staffObtain(Staff staff) throws IllegalAccessException {
+        if (counter >= count) return null;
+        for (Field field : ReflectionUtils.getDeclaredFieldsIncludingInherited(staff.getClass()))
+            if (field.isAnnotationPresent(FieldDefinitionType.class)) {
+
+                Object value = null;
+                switch (field.getAnnotation(FieldDefinitionType.class).value()) {
+                    case TEXT:
+                        value = "Текст документа";
+                        break;
+                    case NUMBER:
+                        value = doRandomNumber();
+                        break;
+                    case HUMANNAME:
+                        value = doRandomPerson();
+                        break;
+                }
+                field.setAccessible(true);
+                field.set(staff, value);
+            }
+        counter++;
+        return staff;
     }
 
 }

@@ -8,27 +8,30 @@ public class Task extends Document {
     /**
      * dateIssue-Дата выдачи поручения
      */
-    @RandomValue(DefinitionTypes.DATE)
+
+    @FieldDefinitionType(DefinitionTypes.DATE)
     private Date dateIssue;
     /**
      * executionData-Срок исполнения поручения
      */
-    @RandomValue(DefinitionTypes.INTEGER)
+    @FieldDefinitionType(DefinitionTypes.INTEGER)
     private int executionData;
     /**
      * respPerson-Ответственный испольнитель
      */
-    @RandomValue(DefinitionTypes.HUMANNAME)
+
+    @FieldDefinitionType(DefinitionTypes.HUMANNAME)
     private String respPerson;
     /**
      * orderController-Контролер поручения
      */
-    @RandomValue(DefinitionTypes.HUMANNAME)
+    @FieldDefinitionType(DefinitionTypes.HUMANNAME)
     private String orderController;
     /**
      * isUnderControl-Признак контрольности
      */
-    @RandomValue(DefinitionTypes.BOOLEAN)
+
+    @FieldDefinitionType(DefinitionTypes.BOOLEAN)
     private boolean isUnderControl;
 
     public Date getDateIssue() {

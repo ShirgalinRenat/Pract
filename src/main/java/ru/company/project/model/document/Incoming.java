@@ -8,22 +8,26 @@ public class Incoming extends Document {
     /**
      * sender-Отправитель
      */
-    @RandomValue(DefinitionTypes.NAME)
+
+    @FieldDefinitionType(DefinitionTypes.NAME)
     private String sender;
     /**
      * destinationIn-Адресат
      */
-    @RandomValue(DefinitionTypes.TEXT)
+
+    @FieldDefinitionType(DefinitionTypes.TEXT)
     private String destinationIn;
     /**
      * outNumber-Исходящий номер
      */
-    @RandomValue(DefinitionTypes.TEXT)
+
+    @FieldDefinitionType(DefinitionTypes.TEXT)
     private String outNumber;
     /**
      * dateOutReg-Исходящая дата регистрации
      */
-    @RandomValue(DefinitionTypes.DATE)
+
+    @FieldDefinitionType(DefinitionTypes.DATE)
     private Date dateOutReg;
 
     public String getSender() {

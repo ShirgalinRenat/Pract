@@ -6,13 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-
  * Store all existing Documents
-
  */
 public class DocumentStorage {
 
-    private DocumentStorage(){
+    private DocumentStorage() {
 
     }
 
@@ -23,7 +21,7 @@ public class DocumentStorage {
         return documentList;
     }
 
-    public static void addDoc(Document document)  {
+    public static void addDoc(Document document) {
         DocumentStorage.documentList.add(document);
     }
 

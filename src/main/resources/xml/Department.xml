@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<departments>
+    <department>
+        <id>1</id>
+        <fullName>Иванов Иван Иванович</fullName>
+        <boss>Петр</boss>
+        <phoneNumber>9843651485</phoneNumber>
+        <shortName>Иванов И И</shortName>
+    </department>
+    <department>
+        <id>2</id>
+        <fullName>Петров Перт Петрович</fullName>
+        <boss>Иван</boss>
+        <phoneNumber>9848453695</phoneNumber>
+        <shortName>Петров Перт Петрович</shortName>
+    </department>
+    <department>
+        <id>3</id>
+        <fullName>Пупкин Олег Викторович</fullName>
+        <boss>Евгений</boss>
+        <phoneNumber>9844836514</phoneNumber>
+        <shortName>Пупкин О В</shortName>
+    </department>
+</departments>
