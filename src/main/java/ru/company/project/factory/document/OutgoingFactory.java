@@ -16,7 +16,9 @@ public class OutgoingFactory extends DocumentFactory {
      * @throws IllegalAccessException
      */
     @Override
-    public Document create() throws IllegalAccessException {
-        return getObtainer().documentObtain(new Outgoing());
+    public Document create() throws  IllegalAccessException {
+        Outgoing out = new Outgoing();
+        getObtainer().documentObtain(out);
+        return out;
     }
 }

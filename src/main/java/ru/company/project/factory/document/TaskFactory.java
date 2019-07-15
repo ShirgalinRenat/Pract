@@ -17,7 +17,9 @@ public class TaskFactory extends DocumentFactory {
      */
     @Override
     public Document create() throws IllegalAccessException {
-        return getObtainer().documentObtain(new Task());
+        Task tsk = new Task();
+        getObtainer().documentObtain(tsk);
+        return tsk;
     }
 
 }

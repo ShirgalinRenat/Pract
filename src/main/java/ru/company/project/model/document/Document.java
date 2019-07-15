@@ -8,32 +8,32 @@ public abstract class Document implements Comparable<Document> {
     /**
      * id-идентификатор документов
      */
-    @FieldDefinitionType(DefinitionTypes.INTEGER)
+    @RandomValue(DefinitionTypes.INTEGER)
     private int id;
     /**
      * docName-название документа
      */
-    @FieldDefinitionType(DefinitionTypes.NAME)
+    @RandomValue(DefinitionTypes.NAME)
     private String docName;
     /**
      * docTxt-текст документа
      */
-    @FieldDefinitionType(DefinitionTypes.TEXT)
+    @RandomValue(DefinitionTypes.TEXT)
     private String docTxt;
     /**
      * regNum-регистрационный номер
      */
-    @FieldDefinitionType(DefinitionTypes.REGNUM)
+    @RandomValue(DefinitionTypes.REGNUM)
     private String regNum;
     /**
      * authorDoc-автор документа
      */
-    @FieldDefinitionType(DefinitionTypes.HUMANNAME)
+    @RandomValue(DefinitionTypes.HUMANNAME)
     private String authorDoc;
     /**
      * docReg-дата регистрации документа
      */
-    @FieldDefinitionType(DefinitionTypes.DATE)
+    @RandomValue(DefinitionTypes.DATE)
     private Date docReg;
 
     @Override
