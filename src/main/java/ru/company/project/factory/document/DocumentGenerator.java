@@ -7,7 +7,10 @@ import ru.company.project.model.document.Document;
  * Зполнение происходит посредством аннотируемых полей
  */
 public interface DocumentGenerator {
+
     public Document documentObtain(Document document) throws IllegalAccessException;
+
+
 
 
 }

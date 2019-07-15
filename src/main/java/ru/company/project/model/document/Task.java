@@ -8,6 +8,7 @@ public class Task extends Document {
     /**
      * dateIssue-Дата выдачи поручения
      */
+
     @FieldDefinitionType(DefinitionTypes.DATE)
     private Date dateIssue;
     /**
@@ -18,6 +19,7 @@ public class Task extends Document {
     /**
      * respPerson-Ответственный испольнитель
      */
+
     @FieldDefinitionType(DefinitionTypes.HUMANNAME)
     private String respPerson;
     /**
@@ -28,6 +30,7 @@ public class Task extends Document {
     /**
      * isUnderControl-Признак контрольности
      */
+
     @FieldDefinitionType(DefinitionTypes.BOOLEAN)
     private boolean isUnderControl;
 

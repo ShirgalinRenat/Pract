@@ -8,21 +8,25 @@ public class Incoming extends Document {
     /**
      * sender-Отправитель
      */
+
     @FieldDefinitionType(DefinitionTypes.NAME)
     private String sender;
     /**
      * destinationIn-Адресат
      */
+
     @FieldDefinitionType(DefinitionTypes.TEXT)
     private String destinationIn;
     /**
      * outNumber-Исходящий номер
      */
+
     @FieldDefinitionType(DefinitionTypes.TEXT)
     private String outNumber;
     /**
      * dateOutReg-Исходящая дата регистрации
      */
+
     @FieldDefinitionType(DefinitionTypes.DATE)
     private Date dateOutReg;
 

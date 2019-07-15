@@ -2,10 +2,15 @@ package ru.company.project.generator;
 
 import ru.company.project.factory.document.DocumentGenerator;
 import ru.company.project.model.document.Document;
+
 import ru.company.project.factory.staff.StaffGenerator;
 import ru.company.project.model.document.FieldDefinitionType;
 import org.apache.hadoop.util.ReflectionUtils;
 import ru.company.project.model.staff.Staff;
+
+import ru.company.project.model.document.RandomValue;
+import org.apache.hadoop.util.ReflectionUtils;
+
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
@@ -16,6 +21,7 @@ import java.util.Random;
 /**
  * Генератор данных
  */
+
 public class RandomFieldGenerator implements DocumentGenerator, StaffGenerator {
     /*
      *Количество элементов
@@ -25,6 +31,9 @@ public class RandomFieldGenerator implements DocumentGenerator, StaffGenerator {
      * счетчик элементов
      */
     private int counter = 0;
+
+public class RandomFieldGenerator implements DocumentGenerator {
+
 
     private int constForGenerate = 1000;
 
@@ -71,6 +80,7 @@ public class RandomFieldGenerator implements DocumentGenerator, StaffGenerator {
             "Оператор"
     );
 
+
     public RandomFieldGenerator() {
 
     }
@@ -78,6 +88,7 @@ public class RandomFieldGenerator implements DocumentGenerator, StaffGenerator {
     public RandomFieldGenerator(int count) {
         this.count = count;
     }
+
 
     String doRandomPerson() {
         return persons.get(random.nextInt(persons.size()));
@@ -123,6 +134,7 @@ public class RandomFieldGenerator implements DocumentGenerator, StaffGenerator {
      * @throws IllegalAccessException
      */
     @Override
+
     public Document documentObtain(Document document) throws IllegalAccessException {
         if (counter >= count) return null;
         for (Field field : ReflectionUtils.getDeclaredFieldsIncludingInherited(document.getClass()))
@@ -130,6 +142,8 @@ public class RandomFieldGenerator implements DocumentGenerator, StaffGenerator {
 
                 Object value = null;
                 switch (field.getAnnotation(FieldDefinitionType.class).value()) {
+
+
                     case INTEGER:
                         value = random.nextInt(constForGenerate);
                         break;
@@ -155,6 +169,7 @@ public class RandomFieldGenerator implements DocumentGenerator, StaffGenerator {
                 field.setAccessible(true);
                 field.set(document, value);
             }
+
         counter++;
         return document;
     }

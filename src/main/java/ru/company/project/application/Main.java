@@ -1,5 +1,6 @@
 package ru.company.project.application;
 
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.xml.sax.SAXException;
@@ -22,6 +23,14 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+
+import ru.company.project.generator.RandomFieldGenerator;
+import ru.company.project.model.document.Document;
+import ru.company.project.factory.document.IncomingFactory;
+import ru.company.project.factory.document.OutgoingFactory;
+import ru.company.project.factory.document.TaskFactory;
+import ru.company.project.storage.DocumentStorage;
+
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -30,7 +39,10 @@ import java.util.stream.Stream;
 public class Main {
 
 
+
     public static void main(String[] args) throws DocumentExistsException, IllegalAccessException, JAXBException, IOException, ParserConfigurationException, SAXException {
+
+
 
         DocumentStorage.addDoc(new IncomingFactory(new RandomFieldGenerator()).create());
         DocumentStorage.addDoc(new TaskFactory(new RandomFieldGenerator()).create());
@@ -40,6 +52,7 @@ public class Main {
         DocumentStorage.addDoc(new OutgoingFactory(new RandomFieldGenerator()).create());
 
         Stream<Document> col = DocumentStorage.getDocumentList().stream();
+
 
         Map<String, List<Document>> namesOfAuthors = MapConverter.convertToTreeMap(col.collect(Collectors.groupingBy(Document::getAuthorDoc)));
 
@@ -78,6 +91,5 @@ public class Main {
         }
 
     }
-
 
 }
